@@ -6,7 +6,7 @@ from apps.movies.api_endpoints.subtitle import MovieSubtitleMiniSerializer
 
 class MovieDetailSerializer(serializers.ModelSerializer):
     moviesubtitle_set = MovieSubtitleMiniSerializer(many=True)
-    
+
     class Meta:
         model = Movie
         fields = ['id', 'title', 'country', 'description',

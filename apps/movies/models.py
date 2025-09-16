@@ -54,9 +54,17 @@ class PosterImage(BaseModel):
 
 
 class MovieFile(BaseModel):
+    QUALITY_CHOICES = [
+        ('360p', '360p'),
+        ('480p', '480p'),
+        ('720p', '720p'),
+        ('1080p', '1080p'),
+        ('4K', '4K'),
+    ]
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     language = models.ForeignKey(Language, on_delete=models.PROTECT)
     file = models.FileField(upload_to="movies/videos")
+    quality = models.CharField(choices=QUALITY_CHOICES, default=QUALITY_CHOICES[2][0])
 
     def __str__(self):
         return f"File: {self.movie.title} ({self.language})"
